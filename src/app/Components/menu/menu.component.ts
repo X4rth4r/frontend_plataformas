@@ -8,7 +8,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatIconModule } from '@angular/material/icon';
 import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
-import { RouterOutlet } from '@angular/router';
+import { Router, RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-menu',
@@ -26,6 +26,15 @@ import { RouterOutlet } from '@angular/router';
 })
 export class MenuComponent {
   private breakpointObserver = inject(BreakpointObserver);
+  private router = inject(Router);
+
+  get isLogin(): boolean {
+    return (
+      this.router.url.includes('/login') ||
+      this.router.url.includes('/registro') ||
+      this.router.url === '/'
+    );
+  }
 
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset).pipe(
     map((result) => result.matches),

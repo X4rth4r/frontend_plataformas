@@ -1,0 +1,26 @@
+.registro-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 60vh;
+}
+
+.registro-card {
+  width: 360px;
+  padding: 16px;
+}
+
+.full-width {
+  width: 100%;
+}
+
+mat-card-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.volver-link {
+  text-decoration: none;
+  font-size: 14px;
+}

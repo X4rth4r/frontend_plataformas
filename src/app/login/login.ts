@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router, RouterLink } from '@angular/router';
 import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
@@ -8,12 +9,15 @@ import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-login',
-  imports: [MatCardModule, MatFormFieldModule, MatInputModule, MatButtonModule],
+  imports: [MatCardModule, MatFormFieldModule, MatInputModule, MatButtonModule, RouterLink],
   templateUrl: './login.html',
   styleUrl: './login.css',
 })
 export class Login {
-  constructor(private loginService: LoginService) {}
+  constructor(
+    private loginService: LoginService,
+    private router: Router
+  ) {}
 
   login(usuario: string, contrasena: string): void {
     const url = 'http://localhost:3000/api/v1/login';
@@ -25,6 +29,10 @@ export class Login {
             icon: 'success',
             title: 'Bienvenido',
             text: 'Inicio de sesión exitoso',
+            timer: 1500,
+            showConfirmButton: false,
+          }).then(() => {
+            this.router.navigate(['/terror']);
           });
         } else {
           Swal.fire({
