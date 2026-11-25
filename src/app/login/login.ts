@@ -20,7 +20,7 @@ export class Login {
   ) {}
 
   login(usuario: string, contrasena: string): void {
-    const url = 'http://localhost:3000/api/v1/login';
+    const url = 'https://backendplataformas-production.up.railway.app/api/v1/login';
     const body = { usuario, contrasena };
     this.loginService.post(url, body).subscribe({
       next: (data: any) => {

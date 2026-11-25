@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class LibrosService {
 
-  private readonly url = 'http://localhost:3000/api/libros';
+  private readonly url = 'https://backendplataformas-production.up.railway.app/api/libros';
 
   constructor(private http: HttpClient) { }
 
